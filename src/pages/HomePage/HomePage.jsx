@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import myApi from "../../api/myApi";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [places, setPlaces] = useState(null);
@@ -19,16 +20,20 @@ function HomePage() {
 
   return (
     <div>
-      <p>homepage</p>
-      <ul>
-        {places.map((place) => {
-          return (
-            <li>
-              <p>{place.name}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <h1>homepage</h1>
+      <div className="card">
+        <ul>
+          {places.map((place) => {
+            return (
+              <li>
+                <Link to={`/places/${place._id}`}>
+                  <p>{place.name}</p>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
