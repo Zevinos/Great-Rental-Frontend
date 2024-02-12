@@ -4,6 +4,7 @@ import useAuth from "../../context/useAuth";
 import myApi from "../../api/myApi";
 
 const SinglePlacePage = () => {
+  const token = localStorage.getItem("token");
   const { user } = useAuth();
   const [place, setPlace] = useState();
   const { placeId } = useParams();
@@ -25,7 +26,9 @@ const SinglePlacePage = () => {
 
   async function handleDelete() {
     try {
-      const response = await myApi.delete(`/places/${placeId}`);
+      const response = await myApi.delete(`/places/${placeId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       console.log(response);
       navigate("/");
     } catch (error) {

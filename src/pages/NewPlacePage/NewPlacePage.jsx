@@ -3,6 +3,8 @@ import myApi from "../../api/myApi";
 import { Link, useNavigate } from "react-router-dom";
 
 function NewPlacePage() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const [formState, setFormState] = useState({
     country: "",
     city: "",
@@ -17,7 +19,9 @@ function NewPlacePage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await myApi.post("/places", formState);
+      const response = await myApi.post("/places", formState, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       console.log(response);
       navigate(`/places/${response.data.id}`);
     } catch (error) {

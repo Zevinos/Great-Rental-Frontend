@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 function HomePage() {
   const [places, setPlaces] = useState(null);
+
   async function fetchPlaces() {
     try {
       const response = await myApi.get("/places");
