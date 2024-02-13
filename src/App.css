@@ -4,3 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+body {
+  max-width: 100%;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+}

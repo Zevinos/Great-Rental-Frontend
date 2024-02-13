@@ -22,6 +22,7 @@ const Navbar = () => {
           <>
             <Link to={"/new-place"}>Rent your place</Link>
             {/* <Link to="/profile">Profile</Link> */}
+            <Link to={"/favorite"}>Liked places</Link>
             <button onClick={handleLogout}>Logout</button>
           </>
         )}

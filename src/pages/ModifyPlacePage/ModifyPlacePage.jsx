@@ -1,11 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import myApi from "../../api/myApi";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
-function NewPlacePage() {
-  const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState(undefined);
-  const token = localStorage.getItem("token");
+function ModifyPlacePage() {
   const [formState, setFormState] = useState({
     country: "",
     city: "",
@@ -17,14 +14,42 @@ function NewPlacePage() {
     price: "",
     img: "",
   });
+  const { placeId } = useParams();
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const fetchOnePlace = async () => {
+    try {
+      const res = await myApi.get(`places/${placeId}`);
+      setFormState({
+        country: res.data.country,
+        city: res.data.city,
+        name: res.data.name,
+        description: res.data.description,
+        capacity: res.data.capacity,
+        bathrooms: res.data.bathrooms,
+        bedrooms: res.data.bedrooms,
+        price: res.data.price,
+        img: res.data.img,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchOnePlace();
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await myApi.post("/places", formState, {
+      const response = await myApi.put("/places/" + placeId, formState, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(response);
-      navigate(`/places/${response.data.id}`);
+      navigate(`/places/${response.data._id}`);
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);
@@ -125,11 +150,13 @@ function NewPlacePage() {
             id="img"
           />
         </div>
-        <button>Create your place</button>
+        <Link to={`/places/${placeId}`}> return</Link>
+        <button>Save changes</button>
       </form>
+
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>
   );
 }
 
-export default NewPlacePage;
+export default ModifyPlacePage;

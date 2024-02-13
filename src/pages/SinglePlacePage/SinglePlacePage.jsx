@@ -14,6 +14,7 @@ const SinglePlacePage = () => {
     try {
       const response = await myApi.get(`/places/${placeId}`);
       console.log(response);
+
       setPlace(response.data);
     } catch (error) {
       console.log(error);
@@ -39,7 +40,7 @@ const SinglePlacePage = () => {
     return <p>No place here</p>;
   }
 
-  const isHost = user._id === place.hostName;
+  const isHost = user && user._id === place.hostName;
 
   return (
     <div className="placeContainer">
@@ -48,6 +49,7 @@ const SinglePlacePage = () => {
       {isHost && (
         <div>
           <button onClick={handleDelete}>Delete</button>
+          <Link to={`/places/modify/${placeId}`}>Edit place</Link>
         </div>
       )}
     </div>
