@@ -1,6 +1,7 @@
 import { useState } from "react";
 import myApi from "../../api/myApi";
 import { Link, useNavigate } from "react-router-dom";
+import "./NewPlacePage.css";
 
 function NewPlacePage() {
   const navigate = useNavigate();
@@ -39,17 +40,20 @@ function NewPlacePage() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="country">Country:</label>
-          <input
-            type="text"
-            value={formState.country}
-            onChange={handleChange}
-            id="country"
-          />
+      <form onSubmit={handleSubmit} className="NewPlaceForm">
+        <h3>Create your rental</h3>
+        <div className="CountryInput">
+          <label htmlFor="country">
+            Country:
+            <input
+              type="text"
+              value={formState.country}
+              onChange={handleChange}
+              id="country"
+            />
+          </label>
         </div>
-        <div>
+        <div className="CityInput">
           <label htmlFor="city">City:</label>
           <input
             type="text"
@@ -58,8 +62,8 @@ function NewPlacePage() {
             id="city"
           />
         </div>
-        <div>
-          <label htmlFor="name">name:</label>
+        <div className="NameInput">
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
             value={formState.name}
@@ -67,56 +71,58 @@ function NewPlacePage() {
             id="name"
           />
         </div>
-        <div>
+        <div className="DescInput">
           <label htmlFor="description">description:</label>
-          <input
+          <textarea
             type="text"
             value={formState.description}
             onChange={handleChange}
             id="description"
           />
         </div>
-        <div>
-          <label htmlFor="capacity">capacity:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.capacity}
-            onChange={handleChange}
-            id="capacity"
-          />
+        <div className="NumberWrapper">
+          <div className="CapInput">
+            <label htmlFor="capacity">capacity:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.capacity}
+              onChange={handleChange}
+              id="capacity"
+            />
+          </div>
+          <div className="BathInput">
+            <label htmlFor="bathrooms">bathrooms:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.bathrooms}
+              onChange={handleChange}
+              id="bathrooms"
+            />
+          </div>
+          <div className="BedInput">
+            <label htmlFor="bedrooms">Bedrooms:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.bedrooms}
+              onChange={handleChange}
+              id="bedrooms"
+            />
+          </div>
+          <div className="PriceInput">
+            <label htmlFor="price">Price per nigth:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.price}
+              onChange={handleChange}
+              id="price"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="bathrooms">bathrooms:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.bathrooms}
-            onChange={handleChange}
-            id="bathrooms"
-          />
-        </div>
-        <div>
-          <label htmlFor="bedrooms">Bedrooms:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.bedrooms}
-            onChange={handleChange}
-            id="bedrooms"
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price per nigth:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.price}
-            onChange={handleChange}
-            id="price"
-          />
-        </div>
-        <div>
+        <div className="ImgInput">
           <label htmlFor="img">Image:</label>
           <input
             type="url"
@@ -125,7 +131,7 @@ function NewPlacePage() {
             id="img"
           />
         </div>
-        <button>Create your place</button>
+        <button className="CreatingButton">Create your place</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>

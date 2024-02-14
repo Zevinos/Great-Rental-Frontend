@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import myApi from "../../api/myApi";
 import { Link } from "react-router-dom";
+import "./HomePage.css";
 
 function HomePage() {
   const [places, setPlaces] = useState(null);
@@ -13,8 +14,8 @@ function HomePage() {
       const favoritesResponse = await myApi.get("/favorite", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setFavorites(favoritesResponse.data.map((oneFav) => oneFav.place));
       setPlaces(response.data);
+      setFavorites(favoritesResponse.data.map((oneFav) => oneFav.place));
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +42,6 @@ function HomePage() {
       const response = await myApi.delete(`/favorite/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -56,23 +56,29 @@ function HomePage() {
   return (
     <div>
       <h1>homepage</h1>
-      <div className="card">
+      <div className="Container">
         <ul>
           {places.map((place) => {
             const isFavorited = favorites.includes(place._id);
 
             return (
-              <li>
-                <Link to={`/places/${place._id}`}>
-                  <p>{place.name}</p>
-                </Link>
-                {isFavorited ? (
-                  <button onClick={() => removeFromFavorites(place._id)}>
-                    ❤️
-                  </button>
-                ) : (
-                  <button onClick={() => addToFavorite(place._id)}>💔</button>
-                )}
+              <li className="Card">
+                <div className="CardContent">
+                  <Link to={`/places/${place._id}`}>
+                    <img src={place.img} alt="" className="placeImg" />
+                    <div className="placeInfo">
+                      <p className="placeName">{place.name}</p>
+                      <p className="placePrice">{place.price}$</p>
+                    </div>
+                  </Link>
+                  {isFavorited ? (
+                    <button onClick={() => removeFromFavorites(place._id)}>
+                      ❤️
+                    </button>
+                  ) : (
+                    <button onClick={() => addToFavorite(place._id)}>💔</button>
+                  )}
+                </div>
               </li>
             );
           })}

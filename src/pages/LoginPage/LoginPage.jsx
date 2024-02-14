@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import myApi from "../../api/myApi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import "./LoginPage.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -34,7 +35,8 @@ function LoginPage() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="LoginForm">
+        <h3>Connect to your account</h3>
         <div>
           <label htmlFor="email">Email:</label>
           <input type="email" value={email} onChange={handleEmail} id="email" />
@@ -49,13 +51,13 @@ function LoginPage() {
           />
         </div>
 
-        <button>Login</button>
+        <button className="LoginButton">Login</button>
+        <p>
+          Wait you dont have an account yet ?! click{" "}
+          <Link to={"/signup"}>here</Link>
+        </p>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>
-        Wait you dont have an account yet ?! click{" "}
-        <Link to={"/signup"}>here</Link>
-      </p>
     </>
   );
 }

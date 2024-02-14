@@ -1,14 +1,9 @@
-.Bar {
+.NavBar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-color: whitesmoke;
-  padding: 0.5rem 5rem;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
+  padding: 0.5rem 3rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -16,4 +11,10 @@
   height: 5rem;
   width: auto;
   cursor: pointer;
+}
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
 }

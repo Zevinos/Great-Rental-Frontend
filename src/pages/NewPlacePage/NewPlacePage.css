@@ -1,0 +1,87 @@
+.NewPlaceForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  background-color: #ccc1a7;
+  margin-top: 30px;
+}
+input[id="country"],
+input[id="city"],
+input[id="name"] {
+  background-color: #2f2f2f;
+  width: 60%;
+  height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  color: white;
+}
+textarea[id="description"] {
+  background-color: #2f2f2f;
+  width: 100%;
+  height: 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  color: white;
+}
+
+input[id="capacity"],
+input[id="bathrooms"],
+input[id="bedrooms"],
+input[id="price"] {
+  background-color: #2f2f2f;
+  width: 75px;
+  height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  color: white;
+}
+.NumberWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 75px;
+}
+
+.CreatingButton {
+  border-radius: 15px;
+  width: 40%;
+  margin-left: 200px;
+  background-color: #2f2f2f;
+  color: #ccc;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+input[id="img"] {
+  background-color: #2f2f2f;
+  width: 60%;
+  height: 50px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  color: white;
+  margin-right: 100px;
+}

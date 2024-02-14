@@ -5,14 +5,13 @@ import "./Navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const { handleLogout, isLoggedIn, user } = useContext(AuthContext);
+  const { handleLogout, isLoggedIn } = useContext(AuthContext);
   return (
-    <header>
-      <div className="Bar">
-        <Link to="/">
-          <img src={logo} alt="" className="Logo" />
-        </Link>
-
+    <header className="NavBar">
+      <Link to="/">
+        <img src={logo} alt="" className="Logo" />
+      </Link>
+      <div className="Buttons">
         {!isLoggedIn ? (
           <>
             <Link to="/signup">Signup</Link>

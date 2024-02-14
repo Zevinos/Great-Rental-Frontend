@@ -1,6 +1,7 @@
 import { useState } from "react";
 import myApi from "../../api/myApi";
 import { Link, useNavigate } from "react-router-dom";
+import "./SignupPage.css";
 
 function SignupPage() {
   const [userName, setUserName] = useState("");
@@ -33,8 +34,9 @@ function SignupPage() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="SignupForm">
+        <h3> Create your account</h3>
+        <div className="FormUsername">
           <label htmlFor="userName">Username:</label>
           <input
             type="text"
@@ -43,11 +45,11 @@ function SignupPage() {
             id="userName"
           />
         </div>
-        <div>
+        <div className="FormEmail">
           <label htmlFor="email">Email:</label>
           <input type="email" value={email} onChange={handleEmail} id="email" />
         </div>
-        <div>
+        <div className="FormPassword">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -57,12 +59,12 @@ function SignupPage() {
           />
         </div>
 
-        <button>Signup</button>
+        <button className="SignupButton">Signup</button>
+        <p>
+          You already have an account ? click <Link to={"/login"}>here</Link>
+        </p>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>
-        You already have an account ? click <Link to={"/login"}>here</Link>
-      </p>
     </>
   );
 }
