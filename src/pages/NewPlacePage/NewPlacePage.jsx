@@ -44,91 +44,99 @@ function NewPlacePage() {
         <h3>Create your rental</h3>
         <div className="CountryInput">
           <label htmlFor="country">
-            Country:
             <input
               type="text"
               value={formState.country}
               onChange={handleChange}
               id="country"
+              placeholder="Country"
             />
           </label>
         </div>
         <div className="CityInput">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city"></label>
           <input
             type="text"
             value={formState.city}
             onChange={handleChange}
             id="city"
+            placeholder="City"
           />
         </div>
         <div className="NameInput">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name"></label>
           <input
             type="text"
             value={formState.name}
             onChange={handleChange}
             id="name"
+            placeholder="Name"
           />
         </div>
         <div className="DescInput">
-          <label htmlFor="description">description:</label>
+          <label htmlFor="description"></label>
           <textarea
             type="text"
             value={formState.description}
             onChange={handleChange}
             id="description"
+            placeholder="Description"
           />
         </div>
         <div className="NumberWrapper">
           <div className="CapInput">
-            <label htmlFor="capacity">capacity:</label>
+            <label htmlFor="capacity"> </label>
             <input
               type="number"
               min="0"
               value={formState.capacity}
               onChange={handleChange}
               id="capacity"
+              placeholder="Capacity"
             />
           </div>
           <div className="BathInput">
-            <label htmlFor="bathrooms">bathrooms:</label>
+            <label htmlFor="bathrooms"></label>
             <input
               type="number"
               min="0"
               value={formState.bathrooms}
               onChange={handleChange}
               id="bathrooms"
+              placeholder="Bathrooms"
             />
           </div>
           <div className="BedInput">
-            <label htmlFor="bedrooms">Bedrooms:</label>
+            <label htmlFor="bedrooms"></label>
             <input
               type="number"
               min="0"
               value={formState.bedrooms}
               onChange={handleChange}
               id="bedrooms"
+              placeholder="Bedrooms"
             />
           </div>
           <div className="PriceInput">
-            <label htmlFor="price">Price per nigth:</label>
+            <label htmlFor="price"></label>
             <input
               type="number"
               min="0"
               value={formState.price}
               onChange={handleChange}
               id="price"
+              placeholder="Price"
             />
           </div>
         </div>
         <div className="ImgInput">
-          <label htmlFor="img">Image:</label>
+          <label htmlFor="img"></label>
           <input
             type="url"
             value={formState.img}
             onChange={handleChange}
             id="img"
+            placeholder="URL"
           />
         </div>
         <button className="CreatingButton">Create your place</button>

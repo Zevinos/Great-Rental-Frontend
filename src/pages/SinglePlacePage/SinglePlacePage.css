@@ -1,0 +1,18 @@
+.Wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  margin-inline: 300px;
+}
+.PlacePic {
+  width: 50%;
+  margin-top: 50px;
+  filter: brightness(0.8);
+}
+.placeDescription {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  text-align: justify;
+}

@@ -16,5 +16,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 3rem;
+}
+Link {
+  color: black;
+}
+.LogoutButton {
+  width: 75px;
+  height: 25px;
+  border-radius: 15px;
 }

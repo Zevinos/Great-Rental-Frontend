@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import myApi from "../../api/myApi";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 
 function HomePage() {
   const [places, setPlaces] = useState(null);
@@ -51,13 +52,12 @@ function HomePage() {
     fetchPlacesAndFavorites();
   }, []);
 
-  if (!places) return <p>Waiting for places to load</p>;
+  if (!places) return <h1>Please signup or login to display places</h1>;
 
   return (
     <div>
-      <h1>homepage</h1>
       <div className="Container">
-        <ul>
+        <ul className="PlacesWrapper">
           {places.map((place) => {
             const isFavorited = favorites.includes(place._id);
 
@@ -65,18 +65,22 @@ function HomePage() {
               <li className="Card">
                 <div className="CardContent">
                   <Link to={`/places/${place._id}`}>
-                    <img src={place.img} alt="" className="placeImg" />
-                    <div className="placeInfo">
-                      <p className="placeName">{place.name}</p>
-                      <p className="placePrice">{place.price}$</p>
-                    </div>
+                    <img src={place.img} alt="" className="PlaceImg" />
                   </Link>
+                  <div className="PlaceInfo">
+                    <p className="PlaceName">{place.name}</p>
+                    <p className="PlacePrice">{place.price}$</p>
+                  </div>
                   {isFavorited ? (
-                    <button onClick={() => removeFromFavorites(place._id)}>
-                      ❤️
-                    </button>
+                    <HiHeart
+                      onClick={() => removeFromFavorites(place._id)}
+                      className="Button"
+                    />
                   ) : (
-                    <button onClick={() => addToFavorite(place._id)}>💔</button>
+                    <HiOutlineHeart
+                      onClick={() => addToFavorite(place._id)}
+                      className="Button"
+                    />
                   )}
                 </div>
               </li>

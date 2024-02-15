@@ -25,7 +25,7 @@ function SignupPage() {
       };
       const response = await myApi.post(`/auth/signup`, newUser);
       console.log(response);
-      navigate(`/`);
+      navigate(`/login`);
     } catch (error) {
       const errorDescription = error.response.data.message;
       setErrorMessage(errorDescription);

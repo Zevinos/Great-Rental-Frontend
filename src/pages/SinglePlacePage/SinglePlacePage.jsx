@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import useAuth from "../../context/useAuth";
 import myApi from "../../api/myApi";
+import "./SinglePlacePage.css";
 
 const SinglePlacePage = () => {
   const token = localStorage.getItem("token");
@@ -44,14 +45,18 @@ const SinglePlacePage = () => {
 
   return (
     <div className="placeContainer">
-      <p>{place.name}</p>
-      <img src={place.img} alt="" />
+      <img src={place.img} alt="" className="PlacePic" />
+      <div className="Wrapper">
+        <p className="placeName">{place.name}</p>
+        <p className="placePrice">{place.price}$ per nigth</p>
+      </div>
       {isHost && (
         <div>
           <button onClick={handleDelete}>Delete</button>
           <Link to={`/places/modify/${placeId}`}>Edit place</Link>
         </div>
       )}
+      <p className="placeDescription">{place.description}</p>
     </div>
   );
 };

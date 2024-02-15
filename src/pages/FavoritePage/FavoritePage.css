@@ -1,4 +1,4 @@
-.Card {
+.FavCard {
   flex-direction: column;
   position: relative;
   width: 250px;
@@ -9,19 +9,19 @@
   font-weight: 600;
   color: #fff;
 }
-.PlaceImg {
+.FavPlaceImg {
   width: 190%;
   object-position: center;
   filter: brightness(80%);
 }
-.PlacePrice {
+.FavPlacePrice {
   position: absolute;
   bottom: 0px;
   right: 0px;
   margin-right: 15px;
   margin-bottom: 0;
 }
-.PlaceName {
+.FavPlaceName {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -31,7 +31,7 @@
   text-transform: capitalize;
 }
 
-.Card .Button {
+.FavCard .FavsButton {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -40,7 +40,7 @@
   font-size: 24px;
   cursor: pointer;
 }
-.PlaceInfo {
+.FavPlaceInfo {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -49,11 +49,10 @@
   justify-content: space-between;
 }
 
-.Container {
+.FavContainer {
   display: flex;
   justify-content: center;
   margin-inline: 5%;
-  margin-top: 30px;
 }
 ul {
   display: flex;

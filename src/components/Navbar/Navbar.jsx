@@ -14,15 +14,21 @@ const Navbar = () => {
       <div className="Buttons">
         {!isLoggedIn ? (
           <>
-            <Link to="/signup">Signup</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/signup" className="Link">
+              Signup
+            </Link>
+            <Link to="/login" className="Link">
+              Login
+            </Link>
           </>
         ) : (
           <>
             <Link to={"/new-place"}>Rent your place</Link>
             {/* <Link to="/profile">Profile</Link> */}
             <Link to={"/favorite"}>Liked places</Link>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="LogoutButton">
+              Logout
+            </button>
           </>
         )}
       </div>

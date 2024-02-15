@@ -44,7 +44,7 @@ input[id="bathrooms"],
 input[id="bedrooms"],
 input[id="price"] {
   background-color: #2f2f2f;
-  width: 75px;
+  width: 100px;
   height: 50px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -58,7 +58,7 @@ input[id="price"] {
 .NumberWrapper {
   display: flex;
   flex-direction: row;
-  gap: 75px;
+  justify-content: space-evenly;
 }
 
 .CreatingButton {
@@ -83,5 +83,4 @@ input[id="img"] {
   margin-bottom: 15px;
   border-radius: 20px;
   color: white;
-  margin-right: 100px;
 }

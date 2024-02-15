@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import myApi from "../../api/myApi";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import "./ModifyPlacePage.css";
 
 function ModifyPlacePage() {
   const [formState, setFormState] = useState({
@@ -64,82 +65,88 @@ function ModifyPlacePage() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="ModifyForm">
+        <h3>Modify informations</h3>
         <div>
-          <label htmlFor="country">Country:</label>
+          <label htmlFor="country"></label>
           <input
             type="text"
             value={formState.country}
             onChange={handleChange}
             id="country"
+            placeholder="Country"
           />
         </div>
         <div>
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city"></label>
           <input
             type="text"
             value={formState.city}
             onChange={handleChange}
             id="city"
+            placeholder="City"
           />
         </div>
         <div>
-          <label htmlFor="name">name:</label>
+          <label htmlFor="name"></label>
           <input
             type="text"
             value={formState.name}
             onChange={handleChange}
             id="name"
+            placeholder="Name"
           />
         </div>
         <div>
           <label htmlFor="description">description:</label>
-          <input
+          <textarea
             type="text"
             value={formState.description}
             onChange={handleChange}
             id="description"
           />
         </div>
-        <div>
-          <label htmlFor="capacity">capacity:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.capacity}
-            onChange={handleChange}
-            id="capacity"
-          />
-        </div>
-        <div>
-          <label htmlFor="bathrooms">bathrooms:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.bathrooms}
-            onChange={handleChange}
-            id="bathrooms"
-          />
-        </div>
-        <div>
-          <label htmlFor="bedrooms">Bedrooms:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.bedrooms}
-            onChange={handleChange}
-            id="bedrooms"
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price per nigth:</label>
-          <input
-            type="number"
-            min="0"
-            value={formState.price}
-            onChange={handleChange}
-            id="price"
-          />
+        <div className="NumberWrapper">
+          <div>
+            <label htmlFor="capacity">capacity:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.capacity}
+              onChange={handleChange}
+              id="capacity"
+            />
+          </div>
+          <div>
+            <label htmlFor="bathrooms">bathrooms:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.bathrooms}
+              onChange={handleChange}
+              id="bathrooms"
+            />
+          </div>
+          <div>
+            <label htmlFor="bedrooms">Bedrooms:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.bedrooms}
+              onChange={handleChange}
+              id="bedrooms"
+            />
+          </div>
+          <div>
+            <label htmlFor="price">Price per nigth:</label>
+            <input
+              type="number"
+              min="0"
+              value={formState.price}
+              onChange={handleChange}
+              id="price"
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="img">Image:</label>
@@ -150,8 +157,13 @@ function ModifyPlacePage() {
             id="img"
           />
         </div>
-        <Link to={`/places/${placeId}`}> return</Link>
-        <button>Save changes</button>
+        <div className="ButtonWrapper">
+          <Link to={`/places/${placeId}`} className="Return">
+            {" "}
+            return
+          </Link>
+          <button className="SaveButton">Save changes</button>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

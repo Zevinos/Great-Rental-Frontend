@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import myApi from "../../api/myApi";
 import { Link, useParams } from "react-router-dom";
+import "./FavoritePage.css";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi2";
 
 function FavoritePage() {
   const [places, setPlaces] = useState();
@@ -10,7 +12,7 @@ function FavoritePage() {
       const response = await myApi.get(`/favorite`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(response);
+
       setPlaces(response.data);
     } catch (error) {
       console.log(error);
@@ -23,16 +25,27 @@ function FavoritePage() {
   return (
     <>
       <div>
-        <h1>Fav page</h1>
+        <h1>Here are displayed all your favorite rentals !</h1>
         <div className="FavContainer">
-          <ul>
+          <ul className="FavWrapper">
             {places &&
               places.map((place) => {
                 return (
-                  <li>
-                    <Link to={`/places/${place.place._id}`}>
-                      <h2>{place.place.name}</h2>
-                    </Link>
+                  <li className="FavCard">
+                    <div className="CardContents">
+                      {console.log(place)}
+                      <Link to={`/places/${place.place._id}`}>
+                        <img
+                          src={place.place.img}
+                          alt=""
+                          className="FavPlaceImg"
+                        />
+                      </Link>
+                      <div className="FavPlaceInfo">
+                        <p className="FavPlaceName">{place.place.name}</p>
+                        <p className="FavPlacePrice">{place.place.price}$</p>
+                      </div>
+                    </div>
                   </li>
                 );
               })}
